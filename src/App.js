@@ -1,16 +1,21 @@
+import Introduction from './components/Introduction/Introduction';
 import './assets/style.css';
-function App() {
+
+const App = () => {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          Column
-        </div>
-        <div class="col">
-          Column
+    <>
+      <Introduction />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            Column
+          </div>
+          <div className="col">
+            Column
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
