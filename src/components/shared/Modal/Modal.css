@@ -1,0 +1,9 @@
+.modal {
+  display: block !important;
+  background-color: rgba(128, 128, 128, 0.8);
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 2px;
+}

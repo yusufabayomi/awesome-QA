@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import './Button.css';
 
-const Button = ({ buttonText, buttonType, icon }) => {
+const Button = ({ buttonText, buttonColor, icon }) => {
   return (
-    <button className={`button btn-${buttonType} w-100`}>
+    <button className={`button btn-${buttonColor} w-100`}>
       <FontAwesomeIcon icon={icon} /> {buttonText}
     </button>
   );
@@ -12,7 +12,7 @@ const Button = ({ buttonText, buttonType, icon }) => {
 
 Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  buttonType: PropTypes.string.isRequired,
+  buttonColor: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
 };
 

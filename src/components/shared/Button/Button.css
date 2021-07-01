@@ -8,17 +8,17 @@
   color: #ffffff;
 }
 
-.btn-sort {
+.btn-green {
   background-color: #52ab82;
   border-bottom: 3px solid #198754;
 }
 
-.btn-delete {
+.btn-red {
   background-color: #f96c79;
   border-bottom: 3px solid #dc3545;
 }
 
-.btn-create {
+.btn-blue {
   background-color: #4895da;
   border-bottom: 3px solid #1c7ed6;
 }

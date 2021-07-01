@@ -7,7 +7,7 @@ describe('Renders Button Component', () => {
   beforeEach(() => {
     const props = {
       buttonText: 'Sort Questions',
-      buttonType: 'sort',
+      buttonColor: 'sort',
     };
     wrapper = shallow(<Button {...props} />);
   });

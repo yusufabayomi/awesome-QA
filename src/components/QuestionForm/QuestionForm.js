@@ -28,7 +28,7 @@ const QuestionForm = ({ onSubmitProp }) => {
             <CheckBox label='Delay entry by 5 seconds' />
           </FinalFormInput>
 
-          <Button buttonText='Create Question' buttonType='create' icon={faPlusCircle} />
+          <Button buttonText='Create Question' buttonColor='blue' icon={faPlusCircle} />
         </form>
       )}
     />
