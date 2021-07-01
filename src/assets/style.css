@@ -5,6 +5,22 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+label {
+  font-weight: 600;
+  color: #b2b3b5;
+}
+
+input[type='text'],
+textarea {
+  background: #f1f3f5;
+  display: block;
+  border: 0;
+  border-bottom: 2px solid #d5d8db;
+  width: 100%;
+  padding: 0.6em 0.5em;
+  border-radius: 5px;
+}
+
 .f600 {
   font-weight: 600;
 }

@@ -1,14 +1,13 @@
-import QAList from "../QAList/QAList";
-import QActions from "../QActions/QActions";
-
+import QAList from '../QAList/QAList';
+import QActions from '../QActions/QActions';
 
 const QASection = () => {
-    return (
-        <div className="col">
-            <QAList />
-            <QActions />
-          </div>
-    )
-}
+  return (
+    <>
+      <QAList />
+      <QActions />
+    </>
+  );
+};
 
 export default QASection;

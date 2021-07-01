@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders TextArea Component renders correctly 1`] = `
+<Fragment>
+  <label
+    className="form-label"
+  >
+    Answer
+  </label>
+  <textarea />
+</Fragment>
+`;

@@ -5,6 +5,7 @@
   font-weight: 600;
   border-radius: 3px;
   font-size: 14px;
+  color: #ffffff;
 }
 
 .btn-sort {
@@ -15,4 +16,9 @@
 .btn-delete {
   background-color: #f96c79;
   border-bottom: 3px solid #dc3545;
+}
+
+.btn-create {
+  background-color: #4895da;
+  border-bottom: 3px solid #1c7ed6;
 }

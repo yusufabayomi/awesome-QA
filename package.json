@@ -10,9 +10,11 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "final-form": "^4.20.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-final-form": "^6.5.3",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
@@ -46,9 +48,9 @@
     ]
   },
   "devDependencies": {
+    "check-prop-types": "^1.1.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "jest-enzyme": "^7.1.2",
-    "check-prop-types": "^1.1.2"
+    "jest-enzyme": "^7.1.2"
   }
 }
