@@ -1,0 +1,13 @@
+.question-btn {
+  background-color: transparent;
+  border: 0;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 0;
+  margin: 0 5px;
+}
+
+.question-btn:hover {
+  color: #a89fca;
+  border-bottom: 1px dotted #a89fca;
+}

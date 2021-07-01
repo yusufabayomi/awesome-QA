@@ -1,4 +1,5 @@
 import Introduction from './components/Introduction/Introduction';
+import QASection from './components/QASection/QASection';
 import './assets/style.css';
 
 const App = () => {
@@ -10,9 +11,7 @@ const App = () => {
           <div className="col">
             Column
           </div>
-          <div className="col">
-            Column
-          </div>
+          <QASection />
         </div>
       </div>
     </>
