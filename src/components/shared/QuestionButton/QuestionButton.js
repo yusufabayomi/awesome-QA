@@ -2,23 +2,29 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './QuestionButton.css';
 
-const QuestionButton = ({ buttonText, icon }) => {
+const propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  emitEvent: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  icon: null,
+};
+
+const QuestionButton = ({ buttonText, icon, emitEvent }) => {
+  const onClickButton = (event) => {
+    event.stopPropagation();
+    if (emitEvent) {
+      emitEvent();
+    }
+  };
   return (
-    <button
-      data-test='questionButtonComponent'
-      className='question-btn'
-      onClick={(e) => {
-        e.stopPropagation();
-        console.log('click');
-      }}>
-      <FontAwesomeIcon icon={icon} /> {buttonText}
+    <button data-testid='button' className='question-btn' onClick={(event) => onClickButton(event)}>
+      {icon && <FontAwesomeIcon icon={icon} data-testid='buttonIcon' />} {buttonText}
     </button>
   );
 };
 
-QuestionButton.propTypes = {
-  buttonText: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-};
-
+QuestionButton.propTypes = propTypes;
+QuestionButton.defaultProps = defaultProps;
 export default QuestionButton;

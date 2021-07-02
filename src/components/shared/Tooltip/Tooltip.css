@@ -8,8 +8,8 @@
   cursor: default;
   border-radius: 3px;
   box-shadow: 0 0 0.3rem rgb(0 0 0 / 16%);
-  bottom: calc(100% + 18px);
-  left: 50%;
+  bottom: calc(100%);
+  left: 85%;
   transform: translateX(-50%);
   text-align: center;
   width: 250px;
@@ -24,4 +24,8 @@
   position: absolute;
   width: 0;
   height: 0;
+}
+
+.info-icon {
+  font-size: 14px;
 }

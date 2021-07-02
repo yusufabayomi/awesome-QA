@@ -1,29 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import CheckBox from './CheckBox';
 
+afterEach(cleanup);
+
 describe('Renders CheckBox Component', () => {
-  let wrapper;
-  beforeEach(() => {
-    const props = {
-      label: 'Delay entry by 5 seconds',
-    };
-    wrapper = shallow(<CheckBox {...props} />);
-  });
+  const props = {
+    label: 'Delay entry by 5 seconds',
+  };
 
   it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(<CheckBox {...props} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('has a label', () => {
-    expect(wrapper.find('label')).toHaveLength(1);
-  });
-
-  it('has an input field', () => {
-    expect(wrapper.find('input')).toHaveLength(1);
-  });
-
-  it('label value must be Delay entry by 5 seconds', () => {
-    expect(wrapper.find('label').text()).toBe('Delay entry by 5 seconds');
+  it('renders an input field with checkbox atribute', () => {
+    const { getByTestId } = render(<CheckBox {...props} />);
+    expect(getByTestId('checkbox')).toHaveAttribute('type', 'checkbox');
   });
 });

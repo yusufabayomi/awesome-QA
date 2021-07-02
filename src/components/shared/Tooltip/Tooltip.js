@@ -1,35 +1,36 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import useExternalClick from './../../../hooks/useExternalClick';
 import './Tooltip.css';
 
-const ToolTip = ({ children, title }) => {
+const propTypes = {
+  description: PropTypes.string.isRequired,
+};
+
+const ToolTip = ({ description }) => {
   const ref = useRef();
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleClick = ({ target }) => {
-    if (ref.current.contains(target)) {
-      return;
-    }
+  const hideTooltip = useCallback(() => {
     setShowTooltip(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
   }, []);
 
+  useExternalClick(ref, hideTooltip);
+
   return (
-    <span ref={ref} onClick={() => setShowTooltip(!showTooltip)} className='position-relative'>
-      {children}
+    <span ref={ref} data-testid='tooltip-trigger' onClick={() => setShowTooltip(!showTooltip)} className='position-relative'>
+      <FontAwesomeIcon className='info-icon' icon={faInfoCircle} />
       {showTooltip && (
-        <div className='tool-tip'>
+        <div className='tool-tip' data-testid='tooltip'>
           <span></span>
-          {title}
+          {description}
         </div>
       )}
     </span>
   );
 };
 
+ToolTip.propTypes = propTypes;
 export default ToolTip;

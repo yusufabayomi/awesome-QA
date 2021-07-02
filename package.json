@@ -7,9 +7,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "final-form": "^4.20.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -30,11 +27,6 @@
       "react-app/jest"
     ]
   },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -48,9 +40,9 @@
     ]
   },
   "devDependencies": {
-    "check-prop-types": "^1.1.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
-    "jest-enzyme": "^7.1.2"
+    "@testing-library/react": "^11.2.7",
+    "jest-enzyme": "^7.1.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/user-event": "^12.1.10"
   }
 }

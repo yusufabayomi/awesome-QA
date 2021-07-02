@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders CheckBox Component renders correctly 1`] = `
-<Fragment>
+<DocumentFragment>
   <label
-    className="form-label"
+    class="form-label"
   >
     <input
+      data-testid="checkbox"
       type="checkbox"
     />
-     
-    Delay entry by 5 seconds
+     Delay entry by 5 seconds
   </label>
-</Fragment>
+</DocumentFragment>
 `;

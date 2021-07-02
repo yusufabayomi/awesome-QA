@@ -1,25 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import TextInput from './TextInput';
 
+afterEach(cleanup);
+
 describe('Renders TextInput Component', () => {
-  let wrapper;
-  beforeEach(() => {
-    const props = {
-      label: 'Question',
-    };
-    wrapper = shallow(<TextInput {...props} />);
-  });
+  const props = {
+    label: 'Question',
+  };
 
   it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(<TextInput {...props} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('has a label', () => {
-    expect(wrapper.find('label')).toHaveLength(1);
-  });
-
-  it('has an input field', () => {
-    expect(wrapper.find('input')).toHaveLength(1);
+  it('renders an input field with text atribute', () => {
+    const { getByTestId } = render(<TextInput {...props} />);
+    expect(getByTestId('text')).toHaveAttribute('type', 'text');
   });
 });

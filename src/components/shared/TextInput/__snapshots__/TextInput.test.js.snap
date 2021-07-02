@@ -1,14 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders TextInput Component renders correctly 1`] = `
-<Fragment>
+<DocumentFragment>
   <label
-    className="form-label"
+    class="form-label"
   >
     Question
   </label>
   <input
+    data-testid="text"
     type="text"
   />
-</Fragment>
+</DocumentFragment>
 `;

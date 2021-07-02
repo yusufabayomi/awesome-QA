@@ -1,29 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders Button Component renders correctly 1`] = `
-<button
-  className="button btn-sort w-100"
->
-  <FontAwesomeIcon
-    border={false}
-    className=""
-    fixedWidth={false}
-    flip={null}
-    icon={null}
-    inverse={false}
-    listItem={false}
-    mask={null}
-    pull={null}
-    pulse={false}
-    rotation={null}
-    size={null}
-    spin={false}
-    swapOpacity={false}
-    symbol={false}
-    title=""
-    transform={null}
-  />
-   
-  Sort Questions
-</button>
+<DocumentFragment>
+  <button
+    class="button btn-blue w-100"
+    data-testid="button"
+  >
+     Sort Questions
+  </button>
+</DocumentFragment>
 `;

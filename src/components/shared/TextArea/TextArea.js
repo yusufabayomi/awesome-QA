@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
 
+const propTypes = {
+  label: PropTypes.string.isRequired,
+  input: PropTypes.object,
+};
+
 const TextArea = ({ label, input }) => {
   return (
     <>
@@ -9,8 +14,5 @@ const TextArea = ({ label, input }) => {
   );
 };
 
-TextArea.propTypes = {
-  label: PropTypes.string.isRequired,
-};
-
+TextArea.propTypes = propTypes;
 export default TextArea;

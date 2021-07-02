@@ -1,25 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import TextArea from './TextArea';
 
+afterEach(cleanup);
+
 describe('Renders TextArea Component', () => {
-  let wrapper;
-  beforeEach(() => {
-    const props = {
-      label: 'Answer',
-    };
-    wrapper = shallow(<TextArea {...props} />);
-  });
+  const props = {
+    label: 'Answer',
+  };
 
   it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('has a label', () => {
-    expect(wrapper.find('label')).toHaveLength(1);
-  });
-
-  it('has a textarea', () => {
-    expect(wrapper.find('textarea')).toHaveLength(1);
+    const { asFragment } = render(<TextArea {...props} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });
