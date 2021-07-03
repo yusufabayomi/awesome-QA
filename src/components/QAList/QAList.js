@@ -1,24 +1,11 @@
 import QAItem from '../QAItem/QAItem';
+import { connect } from 'react-redux';
 
-const questionsAnswers = [
-  {
-    id: '1',
-    question: 'What is ReactJS',
-    answer: 'React is an open source Javascript library developed by facebook',
-  },
-  {
-    id: 2,
-    question: 'Types of React components',
-    answer: 'There are 2 types of react components; the Functional and Class components',
-  },
-  {
-    id: 3,
-    question: 'What is Redux',
-    answer: 'Redux is a predictable state management library that follows the flux architecture',
-  },
-];
-const QAList = () => {
-  return questionsAnswers.map((qa) => <QAItem key={qa.id} qa={qa} />);
+const QAList = ({ qas }) => {
+  return qas.map((qa) => <QAItem key={qa.id} qa={qa} />);
 };
 
-export default QAList;
+const mapStateToProps = ({ qaReducer: { qas } }) => {
+  return { qas };
+};
+export default connect(mapStateToProps, {})(QAList);

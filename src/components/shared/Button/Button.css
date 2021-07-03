@@ -13,12 +13,25 @@
   border-bottom: 3px solid #198754;
 }
 
+.btn-green:hover {
+  background-color: #3c8f68;
+}
+
 .btn-red {
   background-color: #f96c79;
   border-bottom: 3px solid #dc3545;
 }
 
+.btn-red:hover {
+  background-color: #e46572;
+}
+
 .btn-blue {
   background-color: #4895da;
   border-bottom: 3px solid #1c7ed6;
+}
+
+.btn-blue:hover,
+.btn-blue:disabled {
+  background-color: #3e80b9;
 }

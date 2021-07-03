@@ -6,42 +6,78 @@ import TextArea from '../shared/TextArea/TextArea';
 import CheckBox from '../shared/CheckBox/CheckBox';
 import Button from '../shared/Button/Button';
 import { required } from './../../utils';
-import { faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faPlusCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const propTypes = {
   onSubmitProp: PropTypes.func.isRequired,
   create: PropTypes.bool,
 };
 
-const QuestionForm = ({ onSubmitProp, create }) => {
-  const onSubmit = (values) => {
+const defaultProps = {
+  initialValues: null,
+  resetForm: false,
+  innerRef: null,
+  disableFormSubmit: false,
+};
+
+const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFormSubmit }) => {
+  const onSubmitForm = (values) => {
     onSubmitProp(values);
   };
+
+  const getProps = () => {
+    let props;
+    if (disableFormSubmit) {
+      props = {
+        buttonText: 'Please Wait ...',
+        icon: faSpinner,
+      };
+    } else if (create) {
+      props = {
+        buttonText: 'Create Question',
+        icon: faPlusCircle,
+      };
+    } else {
+      props = {
+        buttonText: 'Edit Question',
+        icon: faPencilAlt,
+      };
+    }
+    return props;
+  };
+
   return (
     <Form
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <FinalFormInput name='question' validate={required}>
-            <TextInput label='Question' />
-          </FinalFormInput>
-
-          <FinalFormInput name='answer' validate={required}>
-            <TextArea label='Answer' />
-          </FinalFormInput>
-
-          {create && (
-            <FinalFormInput name='delay' type='checkbox'>
-              <CheckBox label='Delay entry by 5 seconds' />
+      initialValues={initialValues}
+      onSubmit={onSubmitForm}
+      render={({ handleSubmit, form }) => {
+        if (innerRef) {
+          innerRef.current = form;
+        }
+        return (
+          <form onSubmit={handleSubmit}>
+            <FinalFormInput name='question' validate={required}>
+              <TextInput label='Question' />
             </FinalFormInput>
-          )}
 
-          {create ? <Button buttonText='Create Question' buttonColor='blue' icon={faPlusCircle} /> : <Button buttonText='Edit Question' buttonColor='blue' icon={faPencilAlt} />}
-        </form>
-      )}
+            <FinalFormInput name='answer' validate={required}>
+              <TextArea label='Answer' />
+            </FinalFormInput>
+
+            {create && (
+              <FinalFormInput name='delayCreate' type='checkbox'>
+                <CheckBox label='Delay entry by 5 seconds' />
+              </FinalFormInput>
+            )}
+
+            <Button buttonColor='blue' {...getProps()} disabled={disableFormSubmit} animateIcon={disableFormSubmit} />
+          </form>
+        );
+      }}
     />
   );
 };
 
 QuestionForm.propTypes = propTypes;
+QuestionForm.defaultProps = defaultProps;
 export default QuestionForm;

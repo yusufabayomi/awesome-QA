@@ -1,17 +1,29 @@
 import QAList from '../QAList/QAList';
 import QActions from '../QActions/QActions';
 import ToolTip from '../shared/Tooltip/Tooltip';
+import { connect } from 'react-redux';
 
-const QASection = () => {
+const QASection = ({ qas }) => {
   return (
     <>
       <h4 className='text-white f600 mb-3'>
         Created Questions <ToolTip description='Here you can find the created questions and their answers'>/</ToolTip>
       </h4>
-      <QAList />
-      <QActions />
+      {qas.length ? (
+        <>
+          <QAList />
+          <QActions />
+        </>
+      ) : (
+        <div className='alert alert-danger' role='alert'>
+          No questions yet 😊
+        </div>
+      )}
     </>
   );
 };
 
-export default QASection;
+const mapStateToProps = ({ qaReducer: { qas } }) => {
+  return { qas };
+};
+export default connect(mapStateToProps, {})(QASection);

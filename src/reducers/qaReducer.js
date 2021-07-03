@@ -1,4 +1,5 @@
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, FETCH_QA } from '../actions/types';
+import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from '../actions/types';
+import { sortQuestions } from '../utils';
 
 const initialState = {
   qas: [
@@ -23,6 +24,8 @@ const qaReducer = (state = initialState, action) => {
       return { ...state, qas: [] };
     case EDIT_QA:
       return { ...state, qas: state.qas.map((qa) => (qa.id === action.payload.id ? action.payload : qa)) };
+    case SORT_QA:
+      return { ...state, qas: [...sortQuestions(state.qas)] };
     default:
       return { ...state };
   }

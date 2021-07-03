@@ -1,4 +1,4 @@
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, FETCH_QA } from './types';
+import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, FETCH_QA, SORT_QA } from './types';
 import { delay } from './../utils';
 
 export const fetchQa = () => {
@@ -22,7 +22,7 @@ export const creatingQa = () => {
 
 export const createQaWithDelay = (qa) => async (dispatch) => {
   dispatch(creatingQa());
-  await delay(5);
+  await delay(5000);
   dispatch(createQa(qa));
 };
 
@@ -43,5 +43,12 @@ export const deleteQa = (qa_id) => {
   return {
     type: DELETE_QA,
     payload: qa_id,
+  };
+};
+
+export const sortQa = () => {
+  console.log('sort qa');
+  return {
+    type: SORT_QA,
   };
 };
