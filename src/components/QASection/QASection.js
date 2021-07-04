@@ -15,7 +15,7 @@ const QASection = ({ qas }) => {
           <QActions />
         </>
       ) : (
-        <div className='alert alert-danger' role='alert'>
+        <div data-testid='emptyQA' className='alert alert-danger' role='alert'>
           No questions yet 😊
         </div>
       )}
