@@ -9,10 +9,10 @@ const App = () => {
       <Introduction />
       <div className='container'>
         <div className='row'>
-          <div className='col'>
+          <div className='col mb-5'>
             <CreateQuestion />
           </div>
-          <div className='col'>
+          <div className='col mb-5'>
             <QASection />
           </div>
         </div>

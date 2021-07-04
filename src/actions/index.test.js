@@ -1,8 +1,8 @@
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { createQa, createQaWithDelay, creatingQa, deleteAllQa, deleteQa, editQa, fetchQa } from '.';
+import { createQa, createQaWithDelay, creatingQa, deleteAllQa, deleteQa, editQa, fetchQa, sortQa } from '.';
 import { generateId } from './../utils';
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, FETCH_QA } from './types';
+import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from './types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -46,11 +46,11 @@ describe('Questions/Answers (QA) Actions', () => {
     expect(deleteAllQa()).toEqual(expectedAction);
   });
 
-  it(`should create an action with ${FETCH_QA} type`, () => {
+  it(`should create an action with ${SORT_QA} type`, () => {
     const expectedAction = {
-      type: FETCH_QA,
+      type: SORT_QA,
     };
-    expect(fetchQa()).toEqual(expectedAction);
+    expect(sortQa()).toEqual(expectedAction);
   });
 
   it(`should create an action with ${CREATING_QA} type`, () => {
@@ -66,5 +66,5 @@ describe('Questions/Answers (QA) Actions', () => {
     return store.dispatch(createQaWithDelay(payload)).then(() => {
       expect(store.getActions()).toMatchObject(expectedActions);
     });
-  });
+  }, 6000);
 });

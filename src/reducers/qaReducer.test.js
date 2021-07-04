@@ -1,6 +1,6 @@
 import qaReducer from './qaReducer';
 import { generateId } from './../utils';
-import { CREATE_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA } from '../actions/types';
+import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from '../actions/types';
 
 describe('Questions/Answers (QA) Reducers', () => {
   const state = {
@@ -10,12 +10,17 @@ describe('Questions/Answers (QA) Reducers', () => {
         question: 'How to add a question?',
         answer: 'Just use the form below!',
       },
+      {
+        id: 'kqnko6qr',
+        question: 'Are react components reusable',
+        answer: 'Yes, react components should be resuable if well structured',
+      },
     ],
     creating: false,
   };
 
   it('should return the initial state', () => {
-    expect(qaReducer(undefined, {})).toEqual(state);
+    expect(qaReducer(state, {})).toEqual(state);
   });
 
   it(`should handle the ${CREATE_QA} case`, () => {
@@ -39,12 +44,20 @@ describe('Questions/Answers (QA) Reducers', () => {
       question: 'What is react?',
       answer: 'React is a javascript front end library',
     };
+    const expected = [
+      payload,
+      {
+        id: 'kqnko6qr',
+        question: 'Are react components reusable',
+        answer: 'Yes, react components should be resuable if well structured',
+      },
+    ];
     expect(
       qaReducer(state, {
         type: EDIT_QA,
         payload,
       })
-    ).toEqual({ creating: false, qas: [payload] });
+    ).toEqual({ creating: false, qas: expected });
   });
 
   it(`should handle the ${DELETE_ALL_QA} case`, () => {
@@ -62,6 +75,48 @@ describe('Questions/Answers (QA) Reducers', () => {
         type: DELETE_QA,
         payload: id,
       })
-    ).toEqual({ creating: false, qas: [] });
+    ).toEqual({
+      creating: false,
+      qas: [
+        {
+          id: 'kqnko6qr',
+          question: 'Are react components reusable',
+          answer: 'Yes, react components should be resuable if well structured',
+        },
+      ],
+    });
+  });
+
+  it(`should handle the ${SORT_QA} case and return an alphabetically sorted qas state from the previous state`, () => {
+    expect(
+      qaReducer(state, {
+        type: SORT_QA,
+      })
+    ).toEqual({
+      qas: [
+        {
+          id: 'kqnko6qr',
+          question: 'Are react components reusable',
+          answer: 'Yes, react components should be resuable if well structured',
+        },
+        {
+          id: 'kqnko9ix',
+          question: 'How to add a question?',
+          answer: 'Just use the form below!',
+        },
+      ],
+      creating: false,
+    });
+  });
+
+  it(`should handle the ${CREATING_QA} case`, () => {
+    expect(
+      qaReducer(state, {
+        type: CREATING_QA,
+      })
+    ).toEqual({
+      ...state,
+      creating: true,
+    });
   });
 });

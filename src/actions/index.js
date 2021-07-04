@@ -1,11 +1,5 @@
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, FETCH_QA, SORT_QA } from './types';
+import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from './types';
 import { delay } from './../utils';
-
-export const fetchQa = () => {
-  return {
-    type: FETCH_QA,
-  };
-};
 
 export const createQa = (qa) => {
   return {
@@ -47,7 +41,6 @@ export const deleteQa = (qa_id) => {
 };
 
 export const sortQa = () => {
-  console.log('sort qa');
   return {
     type: SORT_QA,
   };
