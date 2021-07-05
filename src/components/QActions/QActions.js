@@ -20,9 +20,9 @@ const QActions = ({ deleteAllQa, sortQa }) => {
         <Button buttonText='Sort Questions' emitEvent={sortQa} buttonColor='green' icon={faSort} />
       </div>
       <div className='col'>
-        <Button buttonText='Delete Questions' buttonColor='red' icon={faTrashAlt} emitEvent={setShowDeletePrompt} />
-        <Modal show={showDeletePrompt} toggle={setShowDeletePrompt} title='Delete All Questions'>
-          <DeletePrompt description='Are you sure you want to delete all questions? Questions deleted can not be retrieved.' yesEvent={onDeleteAll} noEvent={setShowDeletePrompt} />
+        <Button buttonText='Remove Questions' buttonColor='red' icon={faTrashAlt} emitEvent={setShowDeletePrompt} />
+        <Modal show={showDeletePrompt} toggle={setShowDeletePrompt} title='Remove All Questions'>
+          <DeletePrompt description='Are you sure you want to remove all questions? Questions removed can not be retrieved.' yesEvent={onDeleteAll} noEvent={setShowDeletePrompt} />
         </Modal>
       </div>
     </div>

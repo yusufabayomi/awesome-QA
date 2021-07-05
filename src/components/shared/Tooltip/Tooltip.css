@@ -16,7 +16,7 @@
 }
 
 .tool-tip span {
-  bottom: -4px;
+  bottom: -5px;
   left: calc(50% - 10px);
   border-right: 5px solid transparent;
   border-top: 5px solid #f1f3f5;

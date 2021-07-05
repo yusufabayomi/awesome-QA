@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +18,7 @@ const propTypes = {
 
 const QAItem = ({ qa, deleteQa, editQa }) => {
   const { id, question, answer } = qa;
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useToggle();
   const [showDeletePrompt, setShowDeletePrompt] = useToggle();
   const [showEditForm, setShowEditForm] = useToggle();
 
@@ -36,7 +35,7 @@ const QAItem = ({ qa, deleteQa, editQa }) => {
   return (
     <>
       <div className='qa-wrapper'>
-        <div className={`d-flex flex-row justify-content-between align-items-center qa-title ${isOpen ? 'open' : ''}`} onClick={() => setOpen(!isOpen)}>
+        <div className={`d-flex flex-row justify-content-between align-items-center qa-title ${isOpen ? 'open' : ''}`} onClick={setOpen}>
           <div className='flex-fill'>{question}</div>
           <div>
             <QuestionButton icon={faPencilAlt} buttonText='Edit' emitEvent={setShowEditForm} />
