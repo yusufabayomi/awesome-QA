@@ -11,6 +11,10 @@ import { faPencilAlt, faPlusCircle, faSpinner } from '@fortawesome/free-solid-sv
 const propTypes = {
   onSubmitProp: PropTypes.func.isRequired,
   create: PropTypes.bool,
+  initialValues: PropTypes.object,
+  resetForm: PropTypes.bool,
+  innerRef: PropTypes.object,
+  disableFormSubmit: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -22,7 +26,7 @@ const defaultProps = {
 
 const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFormSubmit }) => {
   const onSubmitForm = (values) => {
-    onSubmitProp(values);
+    return onSubmitProp(values);
   };
 
   const getProps = () => {
@@ -49,8 +53,9 @@ const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFo
   return (
     <Form
       initialValues={initialValues}
+      subscription={true}
       onSubmit={onSubmitForm}
-      render={({ handleSubmit, form }) => {
+      render={({ handleSubmit, form, submitting }) => {
         if (innerRef) {
           innerRef.current = form;
         }
@@ -59,18 +64,15 @@ const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFo
             <FinalFormInput name='question' validate={required}>
               <TextInput label='Question' />
             </FinalFormInput>
-
             <FinalFormInput name='answer' validate={required}>
               <TextArea label='Answer' />
             </FinalFormInput>
-
             {create && (
               <FinalFormInput name='delayCreate' type='checkbox'>
                 <CheckBox label='Delay entry by 5 seconds' />
               </FinalFormInput>
             )}
-
-            <Button buttonColor='blue' {...getProps()} disabled={disableFormSubmit} animateIcon={disableFormSubmit} />
+            <Button buttonColor='blue' {...getProps()} disabled={submitting} animateIcon={submitting} />
           </form>
         );
       }}

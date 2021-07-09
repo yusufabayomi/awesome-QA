@@ -8,6 +8,7 @@ import { generateId } from '../../utils';
 
 const CreateQuestion = ({ createQa, createQaWithDelay, creating }) => {
   const ref = useRef();
+
   const onSubmit = (values) => {
     const { delayCreate, question, answer } = values;
     const id = generateId();

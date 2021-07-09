@@ -13,6 +13,7 @@
   transform: translateX(-50%);
   text-align: center;
   width: 250px;
+  display: none;
 }
 
 .tool-tip span {
@@ -28,4 +29,8 @@
 
 .info-icon {
   font-size: 14px;
+}
+
+.info-icon:hover + .tool-tip {
+  display: block;
 }

@@ -22,12 +22,11 @@ const ToolTip = ({ description }) => {
   return (
     <span ref={ref} data-testid='tooltip-trigger' onClick={() => setShowTooltip(!showTooltip)} className='position-relative'>
       <FontAwesomeIcon className='info-icon' icon={faInfoCircle} />
-      {showTooltip && (
-        <div className='tool-tip' data-testid='tooltip'>
-          <span></span>
-          {description}
-        </div>
-      )}
+
+      <div className='tool-tip' data-testid='tooltip'>
+        <span></span>
+        {description}
+      </div>
     </span>
   );
 };

@@ -1,4 +1,4 @@
-export const required = (value) => (value ? undefined : 'This is a required field');
+export const required = (value) => (value && value.trim().length ? undefined : 'This is a required field');
 
 export const delay = (milliSeconds) => new Promise((res) => setTimeout(res, milliSeconds));
 
