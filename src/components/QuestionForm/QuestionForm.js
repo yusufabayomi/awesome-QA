@@ -9,29 +9,24 @@ import { required } from './../../utils';
 import { faPencilAlt, faPlusCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const propTypes = {
-  onSubmitProp: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   create: PropTypes.bool,
   initialValues: PropTypes.object,
-  resetForm: PropTypes.bool,
-  innerRef: PropTypes.object,
-  disableFormSubmit: PropTypes.bool,
 };
 
 const defaultProps = {
   initialValues: null,
-  resetForm: false,
-  innerRef: null,
-  disableFormSubmit: false,
 };
 
-const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFormSubmit }) => {
-  const onSubmitForm = (values) => {
-    return onSubmitProp(values);
+const QuestionForm = ({ onSubmit, create, initialValues }) => {
+  const onSubmitHandler = async (values, form) => {
+    await onSubmit(values);
+    form.restart();
   };
 
-  const getProps = () => {
+  const submitButtonProps = (submitting) => {
     let props;
-    if (disableFormSubmit) {
+    if (submitting) {
       props = {
         buttonText: 'Please Wait ...',
         icon: faSpinner,
@@ -53,29 +48,23 @@ const QuestionForm = ({ onSubmitProp, create, initialValues, innerRef, disableFo
   return (
     <Form
       initialValues={initialValues}
-      subscription={true}
-      onSubmit={onSubmitForm}
-      render={({ handleSubmit, form, submitting }) => {
-        if (innerRef) {
-          innerRef.current = form;
-        }
-        return (
-          <form onSubmit={handleSubmit}>
-            <FinalFormInput name='question' validate={required}>
-              <TextInput label='Question' />
+      onSubmit={onSubmitHandler}
+      render={({ handleSubmit, submitting }) => (
+        <form onSubmit={handleSubmit}>
+          <FinalFormInput name='question' validate={required}>
+            <TextInput label='Question' disabled={submitting} />
+          </FinalFormInput>
+          <FinalFormInput name='answer' validate={required}>
+            <TextArea label='Answer' disabled={submitting} />
+          </FinalFormInput>
+          {create && (
+            <FinalFormInput name='delayCreate' type='checkbox'>
+              <CheckBox label='Delay entry by 5 seconds' disabled={submitting} />
             </FinalFormInput>
-            <FinalFormInput name='answer' validate={required}>
-              <TextArea label='Answer' />
-            </FinalFormInput>
-            {create && (
-              <FinalFormInput name='delayCreate' type='checkbox'>
-                <CheckBox label='Delay entry by 5 seconds' />
-              </FinalFormInput>
-            )}
-            <Button buttonColor='blue' {...getProps()} disabled={submitting} animateIcon={submitting} />
-          </form>
-        );
-      }}
+          )}
+          <Button buttonColor='blue' {...submitButtonProps(submitting)} disabled={submitting} animateIcon={submitting} />
+        </form>
+      )}
     />
   );
 };

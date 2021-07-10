@@ -1,4 +1,4 @@
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from './types';
+import { CREATE_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from './types';
 import { delay } from './../utils';
 
 export const createQa = (qa) => {
@@ -8,14 +8,7 @@ export const createQa = (qa) => {
   };
 };
 
-export const creatingQa = () => {
-  return {
-    type: CREATING_QA,
-  };
-};
-
 export const createQaWithDelay = (qa) => async (dispatch) => {
-  dispatch(creatingQa());
   await delay(5000);
   dispatch(createQa(qa));
 };

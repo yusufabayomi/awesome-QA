@@ -52,7 +52,7 @@ const QAItem = ({ qa, deleteQa, editQa }) => {
       </Modal>
 
       <Modal show={showEditForm} toggle={setShowEditForm} title='Edit Question'>
-        <QuestionForm onSubmitProp={onSubmit} initialValues={qa} />
+        <QuestionForm onSubmit={onSubmit} initialValues={qa} />
       </Modal>
     </>
   );

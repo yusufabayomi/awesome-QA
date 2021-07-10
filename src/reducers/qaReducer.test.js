@@ -1,6 +1,6 @@
 import qaReducer from './qaReducer';
 import { generateId } from './../utils';
-import { CREATE_QA, CREATING_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from '../actions/types';
+import { CREATE_QA, DELETE_ALL_QA, DELETE_QA, EDIT_QA, SORT_QA } from '../actions/types';
 
 describe('Questions/Answers (QA) Reducers', () => {
   const state = {
@@ -106,17 +106,6 @@ describe('Questions/Answers (QA) Reducers', () => {
         },
       ],
       creating: false,
-    });
-  });
-
-  it(`should handle the ${CREATING_QA} case`, () => {
-    expect(
-      qaReducer(state, {
-        type: CREATING_QA,
-      })
-    ).toEqual({
-      ...state,
-      creating: true,
     });
   });
 });

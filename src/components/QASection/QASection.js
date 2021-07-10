@@ -4,7 +4,6 @@ import ToolTip from '../shared/Tooltip/Tooltip';
 import { connect } from 'react-redux';
 
 const QASection = ({ isQasEmpty }) => {
-  console.log('QA Section is rendered');
   return (
     <>
       <h4 className='text-white f600 mb-3'>

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 const propTypes = {
   label: PropTypes.string.isRequired,
   input: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 
-const TextArea = ({ label, input }) => {
+const TextArea = ({ label, input, disabled = false }) => {
   return (
     <>
       <label className='form-label'>{label}</label>
-      <textarea {...input}></textarea>
+      <textarea {...input} disabled={disabled}></textarea>
     </>
   );
 };
